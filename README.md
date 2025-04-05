@@ -5,6 +5,8 @@ Empty template (one button, one cat picture) with [Nuxt 3](https://nuxt.com/), [
 - Package manager: [pnpm](https://pnpm.io/installation)
 - ESLint: [@antfu/eslint-config](https://github.com/antfu/eslint-config)
 
+Template uses `compatibilityVersion: 4` folder structure (`/app` folder)
+
 ## Setup
 
 Install dependencies:
