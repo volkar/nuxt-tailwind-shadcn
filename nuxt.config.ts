@@ -40,14 +40,7 @@ export default defineNuxtConfig({
     typescript: {
         strict: true,
         tsConfig: {
-            include: ['.nuxt/**/*.d.ts', 'app/**/*'],
-            compilerOptions: {
-                types: ['@nuxt/types', '@nuxtjs/eslint-config-typescript', 'node'],
-                paths: {
-                    '~/.nuxt/*': ['./.nuxt/*'],
-                    '#imports': ['./.nuxt/imports.d.ts']
-                }
-            }
+            include: ['.nuxt/**/*.d.ts', 'app/**/*']
         }
     }
 })
