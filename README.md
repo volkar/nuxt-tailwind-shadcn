@@ -9,6 +9,8 @@ Empty template (one button, one cat picture) with [Nuxt 3](https://nuxt.com/), [
 
 Template uses `compatibilityVersion: 4` folder structure (`/app` folder)
 
+![Preview](https://github.com/volkar/nuxt-tailwind-shadcn/blob/main/README.jpg?raw=true)
+
 ## Setup
 
 Install dependencies:
