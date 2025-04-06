@@ -35,9 +35,7 @@ export default defineNuxtConfig({
         },
     },
     vite: {
-        plugins: [
-            tailwindcss(),
-        ],
+        plugins: [tailwindcss()],
     },
     typescript: {
         strict: true,
