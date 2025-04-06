@@ -1,29 +1,37 @@
-import { createConfigForNuxt } from '@nuxt/eslint-config'
+import nuxt from '@nuxt/eslint-config/flat'
+import tsParser from '@typescript-eslint/parser'
 import globals from 'globals'
-import js from '@eslint/js'
-import tseslint from 'typescript-eslint'
-import pluginVue from 'eslint-plugin-vue'
 import eslintConfigPrettier from 'eslint-config-prettier'
 
-export default createConfigForNuxt([
-    { files: ['**/*.{js,mjs,cjs,ts,vue}'] },
+export default [
     {
-        files: ['**/*.{js,mjs,cjs,ts,vue}'],
-        languageOptions: { globals: { ...globals.browser, ...globals.node } }
+        files: ['**/*.{js,ts,vue}'],
+        languageOptions: {
+            globals: {
+                ...globals.browser,
+                ...globals.node,
+                ...globals.es2021
+            },
+            parser: tsParser,
+            parserOptions: {
+                project: './tsconfig.json',
+                extraFileExtensions: ['.vue'],
+                sourceType: 'module'
+            }
+        },
+        plugins: {
+            '@typescript-eslint': require('@typescript-eslint/eslint-plugin'),
+            nuxt: require('eslint-plugin-nuxt')
+        },
+        rules: {
+            // ...
+        }
     },
-    {
-        files: ['**/*.{js,mjs,cjs,ts,vue}'],
-        plugins: { js },
-        extends: ['js/recommended']
-    },
-    tseslint.configs.recommended,
-    pluginVue.configs['flat/essential'],
-    {
-        files: ['**/*.vue'],
-        languageOptions: { parserOptions: { parser: tseslint.parser } }
-    },
-    {
-        ignores: ['node_modules', 'dist', '.nuxt', '.output']
-    },
+    ...nuxt({
+        features: {
+            tooling: true,
+            typeChecking: true
+        }
+    }),
     eslintConfigPrettier
-])
+]
