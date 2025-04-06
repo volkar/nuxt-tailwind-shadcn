@@ -6,14 +6,14 @@ export default defineNuxtConfig({
     css: ['~/assets/css/libraries.css', '~/assets/css/app.css'],
     modules: ['shadcn-nuxt', '@nuxt/icon'],
     app: {
-        rootId: 'app',
+        rootId: 'app'
     },
     future: {
-        compatibilityVersion: 4,
+        compatibilityVersion: 4
     },
     shadcn: {
         prefix: '',
-        componentDir: './app/components/ui',
+        componentDir: './app/components/ui'
     },
     icon: {
         mode: 'css',
@@ -22,23 +22,33 @@ export default defineNuxtConfig({
         customCollections: [
             {
                 prefix: 'local',
-                dir: './app/assets/icons',
-            },
+                dir: './app/assets/icons'
+            }
         ],
         aliases: {
-            logo: 'local-cat',
+            logo: 'local-cat'
         },
         clientBundle: {
             scan: true,
             includeCustomCollections: true,
-            sizeLimitKb: 256,
-        },
+            sizeLimitKb: 256
+        }
     },
     vite: {
-        plugins: [tailwindcss()],
+        plugins: [tailwindcss()]
     },
     typescript: {
         strict: true,
-        typeCheck: 'build',
-    },
+        typeCheck: true,
+        tsConfig: {
+            include: ['.nuxt/**/*.d.ts', 'app/**/*'],
+            compilerOptions: {
+                types: ['@nuxt/types', '@nuxtjs/eslint-config-typescript', 'node'],
+                paths: {
+                    '~/.nuxt/*': ['./.nuxt/*'],
+                    '#imports': ['./.nuxt/imports.d.ts']
+                }
+            }
+        }
+    }
 })
